@@ -12,6 +12,13 @@
 
 #include <nng/nng.h>
 
+#if !NNG_HAVE_SNPRINTF
+#if defined(_MSC_VER) && (_MSC_VER < 1900)
+extern int nni_win_snprintf(char *buffer, size_t count, const char *format, ...);
+#define snprintf nni_win_snprintf
+#endif
+#endif
+
 #include "base64.h"
 
 #include <acutest.h>

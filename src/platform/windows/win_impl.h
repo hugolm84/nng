@@ -27,13 +27,13 @@
 
 #if !NNG_HAVE_SNPRINTF
 #if defined(_MSC_VER) && (_MSC_VER < 1900)
-extern int snprintf(char *buffer, size_t count, const char *format, ...);
+extern int nni_win_snprintf(char *buffer, size_t count, const char *format, ...);
+#define snprintf nni_win_snprintf
 #endif
 #endif
 
 // These types are provided for here, to permit them to be directly inlined
 // elsewhere.
-
 struct nni_plat_thr {
 	void (*func)(void *);
 	void * arg;

@@ -7,10 +7,6 @@
 #include <stdarg.h> // NOLINT
 #include <stdio.h>  // NOLINT
 
-#if !defined(_TRUNCATE)
-#define _TRUNCATE ((size_t) -1)
-#endif //_TRUNCATE
-
 // Each of these functions takes a pointer to an argument list, then formats
 // and writes up to count characters of the given data to the memory pointed to
 // by buffer and appends a terminating null. If count is _TRUNCATE, then these
@@ -20,7 +16,7 @@
 // (not including the terminating null); otherwise, these functions return -1
 // to indicate that truncation occurred.
 int
-snprintf(char *buffer, size_t count, const char *format, ...)
+nni_win_snprintf(char *buffer, size_t count, const char *format, ...)
 {
 	va_list args;
 	va_start(args, format);

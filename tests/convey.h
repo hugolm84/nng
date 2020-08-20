@@ -16,6 +16,12 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#if !NNG_HAVE_SNPRINTF
+#if defined(_MSC_VER) && (_MSC_VER < 1900)
+extern int nni_win_snprintf(char *buffer, size_t count, const char *format, ...);
+#define snprintf nni_win_snprintf
+#endif
+#endif
 
 /*
  * This test framework allows one to write tests as a form of assertion,

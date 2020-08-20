@@ -14,6 +14,13 @@
 
 #include "supplemental/sha1/sha1.h"
 
+#if !NNG_HAVE_SNPRINTF
+#if defined(_MSC_VER) && (_MSC_VER < 1900)
+extern int nni_win_snprintf(char *buffer, size_t count, const char *format, ...);
+#define snprintf nni_win_snprintf
+#endif
+#endif
+
 #include <acutest.h>
 #include <testutil.h>
 
